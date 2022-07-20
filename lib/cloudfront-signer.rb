@@ -166,7 +166,7 @@ module AWS
         separator = subject =~ /\?/ ? '&' : '?'
 
         if configuration_options[:remove_spaces]
-          subject.gsub!(/\s/, "%20")
+          subject = subject.gsub(/\s/, "%20")
         end
 
         result = subject + separator + self.signed_params(subject, policy_options).collect{ |k,v| "#{k}=#{v}" }.join('&')
